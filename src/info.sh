@@ -9,7 +9,20 @@
 # Version: 1.0
 # Datum: 04.12.2018
 
+# Global
 befehl="$0 Datei (Datei2)"
+
+# Zugriffsrechte einer Datei in Oktalzahl umrechnen
+function calcPermOctal {
+     # support linux-gnu & darwin
+	    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+            stat -c %a $1
+        elif [[ "$OSTYPE" == "darwin"* ]]; then
+            stat -f %A $1
+        else
+            echo "Ihre Linux-Version wird nicht unterstüzt!"
+        fi
+}
 
 # keine Argumente
 if [ $# -eq 0 ] ; then
@@ -28,7 +41,7 @@ if [ $# -eq 1 ] ; then
 		echo $1 existiert nicht
 		exit 2
 	else
-		stat -f %A $1
+	    calcPermOctal
 	fi
 	exit 0
 fi
@@ -51,7 +64,7 @@ if [ $# -eq 2 ] ; then
 
 	# Zugriffsrechte ausgeben
 	else
-		stat -f %A $1
+		calcPermOctal
 	fi
 	exit 0
 fi
