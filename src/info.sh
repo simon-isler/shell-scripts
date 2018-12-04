@@ -12,7 +12,6 @@
 befehl="$0 Datei (Datei2)"
 
 # keine Argumente
-
 if [ $# -eq 0 ] ; then
 	echo $befehl
 	exit 1
