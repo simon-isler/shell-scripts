@@ -54,7 +54,7 @@ if [ $# -eq 2 ] ; then
 		exit 2
 	# 2. Datei bzw. Argument existiert
 	elif [ -e $2 ] ; then
-		read -p "Möchten Sie die bestehende Datei überschreiben? (0), den Output an die bestehende Datei anhängen? (1) oder abbrechen? (3)" action
+		read -p "Möchten Sie die bestehende Datei überschreiben? (0), den Output an die bestehende Datei anhängen? (1) oder abbrechen? (3)" antwort
 			case $antwort in
 			1) cat $1 > $2; echo "Die Datei wurde überschrieben.";;
 			2) cat $1 >> $2; echo "Die Datei wurde angehängt.";;
