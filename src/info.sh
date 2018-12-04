@@ -10,7 +10,7 @@
 # Datum: 04.12.2018
 
 # Global
-befehl="$0 Datei (Datei2)"
+befehl="$0 Datei [Datei2]"
 
 # Zugriffsrechte einer Datei in Oktalzahl umrechnen
 function calcPermOctal {
