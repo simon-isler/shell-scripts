@@ -16,6 +16,7 @@ syntax="$0 positiveZahl"
 
 # validation
 if [[ -n $1 ]]; then
+    # help
     if [ $1 = -h -o $1 = -help ] ; then
 		echo "$0 berechnet von einer als Parameter eingegebenen Zahl die Fakultät."
 		echo "Richtiger Syntax: " $syntax
@@ -41,9 +42,8 @@ if [[ -n $1 ]]; then
         echo Es sind ausschliesslich positive Zahlen von 0-59 erlaubt!
         exit 1
 	fi
-
 else
     # error
-    echo Es wurde keine Zahl angegbeen.
+    echo Es wurde keine Zahl angegeben.
     exit 1
 fi
