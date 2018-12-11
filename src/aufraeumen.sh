@@ -11,11 +11,27 @@
 
 # globals
 befehl=$0
+count=0
 
-if [ $1 = -h -o $1 = -help ]; then
+if [[ $1 = -h || $1 = -help ]] ; then
 		echo "$0 verschiebt alle Shell-Scripts in dem Home-Verzeichnis (inkl. Unterverzeichnissen) in das Verzeichnis $HOME/scripts und - falls nötig - wird es ausführbar gemacht. Das Verzeichnis scripts wird erstellt, falls es nicht existiert."
 		echo "Richtiger Syntax: " $befehl
-	elif [ $# -eq 0 ] ; then
+	elif [[ $# -eq 0 ]]; then
 	    # create directory if not exists
         mkdir -p $HOME/scripts
+
+        # check all files
+        for file in "$HOME"/*; do
+            if [[ $file == *.sh ]]; then
+                (( count++ ))
+
+                # move file
+                mv $file $HOME/scripts/
+            fi
+        done
+fi
+
+# no scripts avail
+if [[ $count == 0 ]]; then
+   echo Es gibt keine scripts!
 fi
