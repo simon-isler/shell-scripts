@@ -25,6 +25,11 @@ if [[ $1 = -h || $1 = -help ]] ; then
             if [[ $file == *.sh ]]; then
                 (( count++ ))
 
+                # file is not
+                if [[ ! -x $file ]]; then
+                    chmod +x $file
+                fi
+
                 # move file
                 mv $file $HOME/scripts/
             fi
@@ -33,5 +38,5 @@ fi
 
 # no scripts avail
 if [[ $count == 0 ]]; then
-   echo Es gibt keine scripts!
+   echo Es gibt keine Scripts!
 fi
