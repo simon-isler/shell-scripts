@@ -25,7 +25,7 @@ if [[ $1 = -h || $1 = -help ]] ; then
             if [[ $file == *.sh ]]; then
                 (( count++ ))
 
-                # file is not
+                # file is not executable
                 if [[ ! -x $file ]]; then
                     chmod +x $file
                 fi
