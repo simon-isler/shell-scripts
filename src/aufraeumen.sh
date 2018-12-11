@@ -21,7 +21,7 @@ if [[ $1 = -h || $1 = -help ]] ; then
         mkdir -p $HOME/scripts
 
         # check all files
-        for file in "$HOME"/*; do
+        for file in $HOME/* $HOME/**/*; do
             if [[ $file == *.sh ]]; then
                 (( count++ ))
 
