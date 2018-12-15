@@ -24,7 +24,7 @@ if [[ -n $1 ]]; then
 	# accept only numbers
 	elif [[ $1 =~ $zahlen ]]; then
 	     # number too big
-        if [[ $1 > 59 ]]; then
+        if (( $1 > 59 )); then
             echo Die Zahl ist zu gross!
             exit 2
         else
