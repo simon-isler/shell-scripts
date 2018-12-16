@@ -12,7 +12,6 @@
 # globals
 befehl=$0
 count=0
-exclude="scripts"
 
 if [[ $1 = -h || $1 = -help ]] ; then
 		echo "$0 verschiebt alle Shell-Scripts in dem Home-Verzeichnis (inkl. Unterverzeichnissen) in das Verzeichnis $HOME/scripts und - falls nötig - wird es ausführbar gemacht. Das Verzeichnis scripts wird erstellt, falls es nicht existiert."
