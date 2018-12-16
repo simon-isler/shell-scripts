@@ -12,6 +12,7 @@
 # globals
 befehl=$0
 count=0
+exclude="scripts"
 
 if [[ $1 = -h || $1 = -help ]] ; then
 		echo "$0 verschiebt alle Shell-Scripts in dem Home-Verzeichnis (inkl. Unterverzeichnissen) in das Verzeichnis $HOME/scripts und - falls nötig - wird es ausführbar gemacht. Das Verzeichnis scripts wird erstellt, falls es nicht existiert."
@@ -20,9 +21,10 @@ if [[ $1 = -h || $1 = -help ]] ; then
 	    # create directory if not exists
         mkdir -p $HOME/scripts
 
-        # check all files
-        for file in $HOME/* $HOME/**/*; do
+        # check all files excluding /script directory
+        for file in $(find $HOME -mindepth 1 -maxdepth 2 -type f ! -path '*/scripts/*'); do
             if [[ $file == *.sh ]]; then
+                # count found files
                 (( count++ ))
 
                 # file is not executable
