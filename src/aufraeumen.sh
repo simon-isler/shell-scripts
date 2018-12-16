@@ -13,10 +13,8 @@
 befehl=$0
 count=0
 
-if [[ $1 = -h || $1 = -help ]] ; then
-		echo "$0 verschiebt alle Shell-Scripts in dem Home-Verzeichnis (inkl. Unterverzeichnissen) in das Verzeichnis $HOME/scripts und - falls nötig - wird es ausführbar gemacht. Das Verzeichnis scripts wird erstellt, falls es nicht existiert."
-		echo "Richtiger Syntax: " $befehl
-	elif [[ $# -eq 0 ]]; then
+# no arugment
+if [[ $# -eq 0 ]]; then
 	    # create directory if not exists
         mkdir -p $HOME/scripts
 
@@ -35,9 +33,20 @@ if [[ $1 = -h || $1 = -help ]] ; then
                 mv $file $HOME/scripts/
             fi
         done
+
+        # help argument
+        elif [[ $1 = -h || $1 = -help ]] ; then
+		    echo "$0 verschiebt alle Shell-Scripts in dem Home-Verzeichnis (inkl. Unterverzeichnissen) in das Verzeichnis $HOME/scripts und - falls nötig - wird es ausführbar gemacht. Das Verzeichnis scripts wird erstellt, falls es nicht existiert."
+		    echo "Richtiger Syntax: " $befehl
+		    count=1
+
+		# has an argument
+		else
+		    echo "Richtiger Syntax: " $befehl
+		    count=1
 fi
 
-# no scripts avail
+# no scripts found
 if [[ $count == 0 ]]; then
    echo Es gibt keine Scripts!
 fi
