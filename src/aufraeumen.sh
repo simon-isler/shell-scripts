@@ -21,7 +21,7 @@ if [[ $1 = -h || $1 = -help ]] ; then
         mkdir -p $HOME/scripts
 
         # check all files excluding /script directory
-        for file in $(find $HOME -mindepth 1 -maxdepth 2 -type f ! -path '*/scripts/*'); do
+        for file in $(find $HOME -maxdepth 2 -type f ! -path '*/scripts/*'); do
             if [[ $file == *.sh ]]; then
                 # count found files
                 (( count++ ))
