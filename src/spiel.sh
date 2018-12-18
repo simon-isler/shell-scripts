@@ -12,6 +12,7 @@
 # globals
 nurZahlen='^[0-9]+$'
 isValid=true
+versuche=1
 
 # validation
 if [[ -n $1 ]] ; then
@@ -35,14 +36,20 @@ else
         do
             if (( $zahl > $guess )); then
                 read -p "Zu tief! Spieler 2, geben Sie ihren Tipp ein: " guess
+                (( versuche++ ))
             else
                 read -p "Zu hoch! Spieler 2, geben Sie ihren Tipp ein: " guess
+                 (( versuche++ ))
             fi
         done
 
         # correct
         if (( $zahl == $guess )); then
-            echo "Wow! Sie haben es erraten!"
+            if (( $versuche == 1 )); then
+                echo "Wow! Sie haben es erraten mit einem Versuch!"
+            else
+                echo "Wow! Sie haben es erraten mit $versuche Versuchen!"
+            fi
         fi
     fi
 fi
