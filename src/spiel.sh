@@ -27,7 +27,7 @@ else
         isValid=false
     done
 
-    # correct input
+    # valid input
     if (( $isValid == "true" )); then
         read -p "Spieler 2, geben Sie ihren Tipp ein: " guess
 
