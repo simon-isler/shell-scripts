@@ -23,7 +23,8 @@ if [[ -n $1 ]] ; then
 else
     read -p "Geben Sie eine Zahl ein: " zahl
 
-    while ! [[ $zahl =~ $nurZahlen ]]
+    # validation
+    while (( $zahl == 0 )) || (( $zahl > 93 )) && ! [[ $zahl =~ $nurZahlen ]]
     do
         read -p "Geben Sie eine Zahl ein: " zahl
     done
