@@ -11,6 +11,7 @@
 
 # globals
 nurZahlen='^[0-9]+$'
+isValid=true
 
 # validation
 if [[ -n $1 ]] ; then
@@ -23,7 +24,25 @@ else
     while (( $zahl > 100 )) || (( $zahl < 1 )) || ! [[ $zahl =~ $nurZahlen ]]
     do
         read -p "Falsche Eingabe. Geben Sie eine Zahl ein: " zahl
+        isValid=false
     done
 
+    # correct input
+    if (( $isValid == "true" )); then
+        read -p "Spieler 2, geben Sie ihren Tipp ein: " guess
 
+        while ! (( $zahl == $guess ))
+        do
+            if (( $zahl > $guess )); then
+                read -p "Zu tief! Spieler 2, geben Sie ihren Tipp ein: " guess
+            else (( $zahl < $guess ))
+                read -p "Zu hoch! Spieler 2, geben Sie ihren Tipp ein: " guess
+            fi
+        done
+
+        # correct
+        if (( $zahl == $guess )); then
+            echo "Wow! Sie haben es erraten!"
+        fi
+    fi
 fi
