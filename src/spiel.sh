@@ -18,17 +18,17 @@ versuche=1
 if [[ -n $1 ]] ; then
     echo Richtige syntax: $0
 else
-    # Input
+    # input
     read -p "Spieler 1, geben Sie eine Zahl zwischen 1 und 100 ein: " zahl
 
-    # validation
+    # input validation
     while (( $zahl > 100 )) || (( $zahl < 1 )) || ! [[ $zahl =~ $nurZahlen ]]
     do
         read -p "Falsche Eingabe. Geben Sie eine Zahl ein: " zahl
         isValid=false
     done
 
-    # valid input
+    # guessing
     if (( $isValid == "true" )); then
         read -p "Spieler 2, geben Sie ihren Tipp ein: " guess
 
