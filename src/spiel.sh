@@ -35,7 +35,7 @@ else
         do
             if (( $zahl > $guess )); then
                 read -p "Zu tief! Spieler 2, geben Sie ihren Tipp ein: " guess
-            else (( $zahl < $guess ))
+            else
                 read -p "Zu hoch! Spieler 2, geben Sie ihren Tipp ein: " guess
             fi
         done
